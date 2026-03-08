@@ -421,7 +421,7 @@
         <div class="mobile-couple-divider">🌸</div>
         <div class="fp">
           <div class="fp-role">Bride's Family</div>
-          <div class="fp-name">Janavi (Nikita) Gouda</div>
+          <div class="fp-name">Janavi (Godavari) Gouda</div>
           <div class="fp-members">
             <div class="fp-m"><span class="fp-m-role">Father</span><span class="fp-m-name">Ashok Gouda</span></div>
             <div class="fp-m"><span class="fp-m-role">Mother</span><span class="fp-m-name">Manjula Gouda</span></div>
@@ -614,7 +614,7 @@
     // WhatsApp floating share
     const wa=document.getElementById('fab-wa');
     function updateWA(){
-      const msg=`You're invited to our Double Wedding! 🥰
+      const msg=`Wedding — Vaishnavi ♥ Ganesh & Sourav ♥ Janavi
 2–3 May 2026 · Haliyal
 Open invitation: ${location.href}`;
       wa.href='https://api.whatsapp.com/send?text='+encodeURIComponent(msg);
@@ -636,14 +636,24 @@ Open invitation: ${location.href}`;
       if(!qr && window.QRCode){
         qr=new QRCode(qrWrap,{text:location.href,width:160,height:160,colorDark:'#c9a84c',colorLight:'#140c00',correctLevel:QRCode.CorrectLevel.H});
       }
-      const msg=`You're invited to our Double Wedding! 🥰
+      const msg=`Chopade Double Wedding — Vaishnavi ♥ Ganesh & Sourav ♥ Janavi
 2–3 May 2026 · Haliyal
 Open invitation: ${location.href}`;
       btnWA.href='https://api.whatsapp.com/send?text='+encodeURIComponent(msg);
     }
     function closeShare(){ shareBack.style.display='none'; }
 
-    shareBtn.addEventListener('click',openShare);
+    shareBtn.addEventListener('click',async()=>{
+      const shareData={
+        title:'Chopade Double Wedding — Vaishnavi ♥ Ganesh & Sourav ♥ Janavi',
+        text:'2–3 May 2026 · Sri Ganesh Kalyana Mantap, Haliyal',
+        url:location.href
+      };
+      if(navigator.share){
+        try{ await navigator.share(shareData); return; }catch{}
+      }
+      openShare();
+    });
     shareClose.addEventListener('click',closeShare);
     shareBack.addEventListener('click',e=>{ if(e.target===shareBack) closeShare(); });
 
@@ -684,4 +694,3 @@ Open invitation: ${location.href}`;
   </script>
 </body>
 </html>
-
