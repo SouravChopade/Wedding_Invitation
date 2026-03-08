@@ -635,6 +635,10 @@ Open invitation: ${location.href}`;
       shareBack.style.display='flex';
       if(!qr && window.QRCode){
         qr=new QRCode(qrWrap,{text:location.href,width:160,height:160,colorDark:'#c9a84c',colorLight:'#140c00',correctLevel:QRCode.CorrectLevel.H});
+        btnQR.disabled=false; btnQR.textContent='Download QR';
+      } else if(!window.QRCode){
+        qrWrap.innerHTML='<div style="font-size:.8rem;color:rgba(253,246,233,.65);text-align:center;padding:.6rem">QR code unavailable.<br>Use “Copy Link” or WhatsApp.</div>';
+        btnQR.disabled=true; btnQR.textContent='QR Unavailable';
       }
       const msg=`Chopade Double Wedding — Vaishnavi ♥ Ganesh & Sourav ♥ Janavi
 2–3 May 2026 · Haliyal
@@ -643,17 +647,7 @@ Open invitation: ${location.href}`;
     }
     function closeShare(){ shareBack.style.display='none'; }
 
-    shareBtn.addEventListener('click',async()=>{
-      const shareData={
-        title:'Chopade Double Wedding — Vaishnavi ♥ Ganesh & Sourav ♥ Janavi',
-        text:'2–3 May 2026 · Sri Ganesh Kalyana Mantap, Haliyal',
-        url:location.href
-      };
-      if(navigator.share){
-        try{ await navigator.share(shareData); return; }catch{}
-      }
-      openShare();
-    });
+    shareBtn.addEventListener('click',openShare);
     shareClose.addEventListener('click',closeShare);
     shareBack.addEventListener('click',e=>{ if(e.target===shareBack) closeShare(); });
 
