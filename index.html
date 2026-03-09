@@ -247,8 +247,8 @@
       .cb-body{grid-template-columns:1fr;gap:0;padding:1.2rem}
       .cb-mid{display:none}
       .mobile-couple-divider{display:block}
-      .cb-header{flex-direction:column;align-items:flex-start}
-      .cb-tag{align-self:flex-end}
+      .cb-header{flex-direction:column;align-items:center;text-align:center;gap:0.5rem}
+      .cb-tag{align-self:center}
       .hero-div-line{height:55px}
     }
 
@@ -520,7 +520,8 @@
   </div>
 
   <!-- QRCode library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-M9W8a3AQ3u2++P8qJjKxQ2v4y7w1B4b8mCs2A9Ut4Pg8bXrY1rSx1oVx+M0K1Gv4j4mQ6D2hNZmJqU3oR0zN1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>if(!window.QRCode)document.write('<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/master/qrcode.min.js"><\/script>')</script>
 
   <script>
     // --- Mobile 100vh fix
@@ -688,4 +689,3 @@ Open invitation: ${location.href}`;
   </script>
 </body>
 </html>
-
